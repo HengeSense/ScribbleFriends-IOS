@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  huadufu
+
+  Created by Tianhu Yang on 8/20/12.
+  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+*/
+"About" = "About";
+"Info" = "Scribble Friends v1.0\nCopyright © 2013 iNomad";
+"More Apps" = "More Apps";
+"I know"="I know";
+"Confirm"="I know";
+"Cancel"="Cancel";
+"PickImage"="Pick an image from";
+"Facebook"="Facebook";
+"Library"="Library";
+"Album"="Album";
+"NewOptions"="New Options";
+"Color"="Color";
+"ShareToFacebook"="Share to Facebook";
+"SaveToPhone"="Save to Phone";
+
+"Oops"="Oops";
+"SaveWidthError"="The width should be > 0 and < ";
+"SaveHeightError"="The height should be > 0 and < ";
+"SaveOK"="Saved successfully";
+"Greate"="Greate!";
+
+"PickPicture"="Pick an picture";
