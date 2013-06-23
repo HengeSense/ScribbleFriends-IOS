@@ -29,6 +29,7 @@ enum FROM{
 	GLint backingHeight;	
 	CGPoint scaleStart;   
 	GLuint depthRenderBuffer,textureDepthBuffer,undoDepthBuffer;
+    GLuint sampleColorRenderbuffer, sampleDepthRenderbuffer;
     float backColorf[4];
     unsigned drawViewDataLength;
     void *drawViewData;
@@ -52,7 +53,7 @@ enum FROM{
 @synthesize viewFrameBuffer,texture,viewRenderBuffer;
 @synthesize space;//image size and otho size
 @synthesize textureSize;
-@synthesize textureFrameBuffer,undoTexture,undoFrameBuffer;
+@synthesize textureFrameBuffer,undoTexture,undoFrameBuffer, sampleFramebuffer;
 @synthesize backColor;
 
 -(id) initWith:(PaintView *)aPaintView
@@ -143,6 +144,7 @@ enum FROM{
 	[self createFrameBuffer];
     //[self destroyTexture];
     [self createTexture];
+    [self createSampleBuffer];
     [self presentTexture];
     drawViewRatio.width=backingWidth/textureSize.width;
     drawViewRatio.height=backingHeight/textureSize.height;
@@ -218,24 +220,24 @@ enum FROM{
             glViewport(0, 0, size.width, size.height);
             glMatrixMode(GL_MODELVIEW);
             break;
-        case 1://texture
-            glBindFramebufferOES(GL_FRAMEBUFFER_OES, textureFrameBuffer);
-            glMatrixMode(GL_PROJECTION); 
-            glLoadIdentity();
-            glOrthof(0, size.width, 0, size.height, -1, 1);
-            glViewport(scaleStart.x, scaleStart.y, space.width/ratio, space.height/ratio);         
-            glMatrixMode(GL_MODELVIEW);
-            if(from==FROM_IMAGE)
-                glEnable(GL_SCISSOR_TEST);
-            break;
-        case 2://full space
-            glBindFramebufferOES(GL_FRAMEBUFFER_OES, textureFrameBuffer);
-            glMatrixMode(GL_PROJECTION); 
-            glLoadIdentity();
-            glOrthof(0, space.width, 0, space.height, -1, 1);
-            glViewport(0, 0, space.width, space.height);         
-            glMatrixMode(GL_MODELVIEW);
-            break;
+//        case 1://texture
+//            glBindFramebufferOES(GL_FRAMEBUFFER_OES, textureFrameBuffer);
+//            glMatrixMode(GL_PROJECTION); 
+//            glLoadIdentity();
+//            glOrthof(0, size.width, 0, size.height, -1, 1);
+//            glViewport(scaleStart.x, scaleStart.y, space.width/ratio, space.height/ratio);         
+//            glMatrixMode(GL_MODELVIEW);
+//            if(from==FROM_IMAGE)
+//                glEnable(GL_SCISSOR_TEST);
+//            break;
+//        case 2://texture full space
+//            glBindFramebufferOES(GL_FRAMEBUFFER_OES, textureFrameBuffer);
+//            glMatrixMode(GL_PROJECTION); 
+//            glLoadIdentity();
+//            glOrthof(0, space.width, 0, space.height, -1, 1);
+//            glViewport(0, 0, space.width, space.height);         
+//            glMatrixMode(GL_MODELVIEW);
+//            break;
         case 3://undotexture
             glBindFramebufferOES(GL_FRAMEBUFFER_OES, undoFrameBuffer);
             glMatrixMode(GL_PROJECTION); 
@@ -250,6 +252,32 @@ enum FROM{
             glLoadIdentity();
             glOrthof(0, textureSize.width, 0, textureSize.height, -1, 1);
             glViewport(0, 0, textureSize.width, textureSize.height);         
+            glMatrixMode(GL_MODELVIEW);
+            break;
+        case 5://swap to sampleFramebuffer
+            glBindFramebufferOES(GL_FRAMEBUFFER_OES, sampleFramebuffer);
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            glOrthof(0, textureSize.width, 0, textureSize.height, -1, 1);
+            glViewport(0, 0, textureSize.width, textureSize.height);
+            glMatrixMode(GL_MODELVIEW);
+            break;
+        case 1://texture
+            glBindFramebufferOES(GL_FRAMEBUFFER_OES, sampleFramebuffer);
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            glOrthof(0, size.width, 0, size.height, -1, 1);
+            glViewport(scaleStart.x, scaleStart.y, space.width/ratio, space.height/ratio);
+            glMatrixMode(GL_MODELVIEW);
+            if(from==FROM_IMAGE)
+                glEnable(GL_SCISSOR_TEST);
+            break;
+        case 2://texture full space
+            glBindFramebufferOES(GL_FRAMEBUFFER_OES, sampleFramebuffer);
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            glOrthof(0, space.width, 0, space.height, -1, 1);
+            glViewport(0, 0, space.width, space.height);
             glMatrixMode(GL_MODELVIEW);
             break;
         default:
@@ -294,6 +322,39 @@ enum FROM{
     glEnable(GL_BLEND);
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderBuffer);
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];
+}
+
+- (void) resolveSample
+{
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER_APPLE, textureFrameBuffer);
+    glBindFramebuffer(GL_READ_FRAMEBUFFER_APPLE, sampleFramebuffer);
+    glResolveMultisampleFramebufferAPPLE();
+}
+
+- (void) swapToSample
+{
+    [self switchMode:5u];
+    glEnable(GL_TEXTURE_2D);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glDisable(GL_BLEND);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    
+    CGSize size=textureSize;
+    GLfloat vertices[] = {
+        0, size.height,
+        size.width, size.height,
+        0,  0,
+        size.width,  0,
+    };
+    glVertexPointer(2, GL_FLOAT, 0, vertices);
+    glTexCoordPointer(2, GL_FLOAT, 0, textCoords);
+    GLfloat color[4];
+    glGetFloatv(GL_CURRENT_COLOR,color);
+    glColor4f(1.0, 1.0, 1.0, 1.0);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    glColor4f(color[0], color[1], color[2], color[3]);
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+    glEnable(GL_BLEND);
 }
 
 - (void) swap
@@ -416,6 +477,29 @@ enum FROM{
 	}    
 	return YES;
 }
+- (void) createSampleBuffer
+{
+    glGenFramebuffers(1, &sampleFramebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, sampleFramebuffer);
+    
+    glGenRenderbuffers(1, &sampleColorRenderbuffer);
+    glBindRenderbuffer(GL_RENDERBUFFER, sampleColorRenderbuffer);
+    glRenderbufferStorageMultisampleAPPLE(GL_RENDERBUFFER, 4, GL_RGBA8_OES, textureSize.width, textureSize.height);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, sampleColorRenderbuffer);
+    
+    glGenRenderbuffers(1, &sampleDepthRenderbuffer);
+    glBindRenderbuffer(GL_RENDERBUFFER, sampleDepthRenderbuffer);
+    glRenderbufferStorageMultisampleAPPLE(GL_RENDERBUFFER, 4, GL_DEPTH_COMPONENT16, textureSize.width, textureSize.height);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, sampleDepthRenderbuffer);
+    
+    glClearColor(backColorf[0], backColorf[1], backColorf[2], backColorf[3]);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE){
+        NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
+    }
+        
+}
 
 // Clean up any buffers we have allocated.
 - (void)destroyFrameBuffer
@@ -443,6 +527,16 @@ enum FROM{
     glDeleteTextures(1, &undoTexture);
     undoTexture=0;
     
+}
+
+- (void) destroySampleBuffer
+{
+    glDeleteFramebuffersOES(1, &sampleFramebuffer);
+	viewFrameBuffer = 0;
+	glDeleteRenderbuffersOES(1, &sampleColorRenderbuffer);
+	viewRenderBuffer = 0;
+	glDeleteRenderbuffersOES(1, &sampleDepthRenderbuffer);
+    depthRenderBuffer = 0;
 }
 
 #pragma mark - draw image
@@ -598,6 +692,7 @@ enum FROM{
 - (void) draw:(void *)data size:(CGSize)size points:(CGPoint[4])points mode:(unsigned)mode
 {
     GLuint aTexture;
+    [self swapToSample];
     [self switchMode:mode];
     glEnable(GL_TEXTURE_2D);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -631,7 +726,9 @@ enum FROM{
     glColor4f(color[0], color[1], color[2], color[3]);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     glDeleteTextures(1, &aTexture);
-
+    
+    [self resolveSample];
+    
 }
 
 #pragma mark - snapshot

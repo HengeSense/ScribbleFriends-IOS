@@ -173,7 +173,7 @@ const int BRUSH_ERASER=2;
     [self drawSolidLine:first third:second];
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, paintDraw.viewRenderBuffer);
     [paintDraw.context presentRenderbuffer:GL_RENDERBUFFER_OES];*/
-    // 
+    //
     [paintDraw switchMode:1];
     [self updatePoint:start];
     [self updatePoint:end];
@@ -182,6 +182,7 @@ const int BRUSH_ERASER=2;
     end.x*=paintView.contentScaleFactor;
     end.y*=paintView.contentScaleFactor;
 	[self drawSolidLine:start third:end];
+    [paintDraw resolveSample];
     [paintDraw presentTexture];
 	
 }
@@ -197,9 +198,10 @@ const int BRUSH_ERASER=2;
 
 - (void) prepare
 {
-    glBindFramebufferOES(GL_FRAMEBUFFER_OES, paintDraw.textureFrameBuffer);
+    glBindFramebufferOES(GL_FRAMEBUFFER_OES, paintDraw.sampleFramebuffer);
     glClear(GL_DEPTH_BUFFER_BIT);
     [paintDraw swap];
+    [paintDraw swapToSample];
 }
 
 - (void) drawDot:(CGPoint)loc
@@ -212,7 +214,8 @@ const int BRUSH_ERASER=2;
     loc.x*=paintView.contentScaleFactor;
     loc.y*=paintView.contentScaleFactor;
     [self drawArc:width*M_PI x:loc.x y:loc.y r:width/2.0f];
-    glDisable(GL_DEPTH_TEST); 
+    glDisable(GL_DEPTH_TEST);
+    [paintDraw resolveSample];
     [paintDraw presentTexture];
 }
 

@@ -47,7 +47,7 @@
     
     if ((self = [super initWithCoder:coder])) {        
         
-        //self.contentScaleFactor = 1.0; 
+        self.clipsToBounds = YES; 
         paintDraw=[[PaintDraw alloc] initWith:self];
         brush=[[Brush alloc] initWith:self];
         paintTouch=[[PaintTouch alloc] initWith:self];

@@ -39,7 +39,7 @@ typedef struct{
 @property(nonatomic,assign) int drawMode;
 @property(nonatomic, assign) float maxScale;
 @property(nonatomic, strong)  EAGLContext *context;
-@property(nonatomic, assign,readonly) GLuint viewFrameBuffer,texture,textureFrameBuffer,viewRenderBuffer,undoTexture,undoFrameBuffer;
+@property(nonatomic, assign,readonly) GLuint viewFrameBuffer,texture,textureFrameBuffer,viewRenderBuffer,undoTexture,undoFrameBuffer, sampleFramebuffer;
 @property(nonatomic,assign) CGSize space;
 @property(nonatomic,assign) CGSize textureSize;
 @property(nonatomic,assign) float *backColor;
@@ -64,5 +64,7 @@ typedef struct{
 - (void) zoomIn:(BOOL) yesOrNO;
 - (UIImage*) resizeImage:(UIImage*)image;
 - (void) swap;
+- (void) resolveSample;
+- (void) swapToSample;
 - (int (*)[2]) getMeasure;
 @end
