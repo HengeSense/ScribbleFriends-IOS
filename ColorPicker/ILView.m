@@ -63,7 +63,7 @@
 
 -(void)forceStartupOrientation
 {
-    [self deviceDidRotate:[UIApplication sharedApplication].statusBarOrientation];
+    [self deviceDidRotate:(UIDeviceOrientation)[UIApplication sharedApplication].statusBarOrientation];
 }
 
 

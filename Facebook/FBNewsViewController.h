@@ -11,4 +11,5 @@
 
 @interface FBNewsViewController : UIViewController
 @property(nonatomic,strong) id<FBNewsDelegate> fbNewsDelegate;
++ (FBNewsViewController*) defaultNewsViewController;
 @end

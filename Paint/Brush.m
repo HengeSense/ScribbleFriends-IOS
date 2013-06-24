@@ -50,7 +50,7 @@ const int BRUSH_ERASER=2;
     //default start
     self.opacity=defaultOpacity;
     self.pixelStep=defaultPixelStep;
-    self.brushScale=1.0f;
+    self.brushScale=5.0f;
     //default end
     
     //self.textureIndex=0;

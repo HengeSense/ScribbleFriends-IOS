@@ -77,7 +77,6 @@
 		079B556615CC9C160018B7BB /* ILSaturationBrightnessPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 079B556515CC9C160018B7BB /* ILSaturationBrightnessPickerView.m */; };
 		079B556A15CC9DB20018B7BB /* ILColorPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079B556815CC9DB20018B7BB /* ILColorPickerController.m */; };
 		079B556B15CC9DB20018B7BB /* ILColorPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 079B556915CC9DB20018B7BB /* ILColorPickerController.xib */; };
-		079C467716BA6E2D0098985C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C467616BA6E2D0098985C /* FacebookSDK.framework */; };
 		079C467916BA6E7E0098985C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C467816BA6E7E0098985C /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		079CAF6115DC7A0D00635A9F /* zoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 079CAF6015DC7A0D00635A9F /* zoom.png */; };
 		079CAF6B15DC7B8800635A9F /* absorb1.png in Resources */ = {isa = PBXBuildFile; fileRef = 079CAF6215DC7B8800635A9F /* absorb1.png */; };
@@ -100,10 +99,8 @@
 		079DC91B15D249F9000510CC /* SaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 079DC91915D249F9000510CC /* SaveViewController.m */; };
 		079DC91C15D249F9000510CC /* SaveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 079DC91A15D249F9000510CC /* SaveViewController.xib */; };
 		079EFCF315E8AAA400BE792C /* SaveViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 079EFCF215E8AAA400BE792C /* SaveViewController~ipad.xib */; };
-		079EFCF615E8AABE00BE792C /* TextPickerViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 079EFCF415E8AABE00BE792C /* TextPickerViewController~ipad.xib */; };
 		079EFCF815E8AAD100BE792C /* ShapeViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 079EFCF715E8AAD100BE792C /* ShapeViewController~ipad.xib */; };
 		079EFCFA15E8AAE600BE792C /* ILColorPickerController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 079EFCF915E8AAE600BE792C /* ILColorPickerController~ipad.xib */; };
-		079EFCFD15E8AB0C00BE792C /* ViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 079EFCFB15E8AB0C00BE792C /* ViewController~ipad.xib */; };
 		07B01DD815DB6922004F17EF /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B01DD615DB6922004F17EF /* unchecked.png */; };
 		07B01DD915DB6922004F17EF /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B01DD715DB6922004F17EF /* checked.png */; };
 		07B01DDC15DB69E9004F17EF /* eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B01DDB15DB69E9004F17EF /* eraser.png */; };
@@ -114,7 +111,6 @@
 		07B1A5A315CDCA71006AC4BA /* ShapeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B1A5A115CDCA71006AC4BA /* ShapeViewController.xib */; };
 		07B1A5AB15CE114D006AC4BA /* TextPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B1A5A915CE114D006AC4BA /* TextPickerViewController.m */; };
 		07B1A5B615CE3AE0006AC4BA /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B1A5B515CE3AE0006AC4BA /* arrow.png */; };
-		07B1A5BB15CE3EA0006AC4BA /* TextPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B1A5BD15CE3EA0006AC4BA /* TextPickerViewController.xib */; };
 		07B3771315CA207F004AB14B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3771215CA207F004AB14B /* UIKit.framework */; };
 		07B3771515CA207F004AB14B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3771415CA207F004AB14B /* Foundation.framework */; };
 		07B3771715CA207F004AB14B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3771615CA207F004AB14B /* CoreGraphics.framework */; };
@@ -124,7 +120,6 @@
 		07B3773415CA207F004AB14B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3773315CA207F004AB14B /* SenTestingKit.framework */; };
 		07B3773515CA207F004AB14B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3771215CA207F004AB14B /* UIKit.framework */; };
 		07B3773615CA207F004AB14B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3771415CA207F004AB14B /* Foundation.framework */; };
-		07B3773E15CA207F004AB14B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B3773C15CA207F004AB14B /* InfoPlist.strings */; };
 		07B3774115CA207F004AB14B /* huadufuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3774015CA207F004AB14B /* huadufuTests.m */; };
 		07B3776415CA227B004AB14B /* AbsorbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3774D15CA227B004AB14B /* AbsorbView.m */; };
 		07B3776515CA227B004AB14B /* Brush.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3774F15CA227B004AB14B /* Brush.m */; };
@@ -151,14 +146,18 @@
 		07ED6F2716B884DA00B3BEC0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ED6F2616B884DA00B3BEC0 /* FacebookSDK.framework */; };
 		07ED6F3016B885EB00B3BEC0 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 07ED6F2F16B885EB00B3BEC0 /* FBUserSettingsViewResources.bundle */; };
 		07ED6F3216B8862500B3BEC0 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 07ED6F3116B8862500B3BEC0 /* FacebookSDKResources.bundle */; };
-		440BC75716B1FB3400B94412 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 440BC75516B1FB3400B94412 /* InfoPlist.strings */; };
-		440BC75A16B1FB4E00B94412 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440BC75816B1FB4E00B94412 /* ViewController.xib */; };
 		440BC75D16B1FB7B00B94412 /* alpha1.png in Resources */ = {isa = PBXBuildFile; fileRef = 440BC75B16B1FB7B00B94412 /* alpha1.png */; };
 		440BC75E16B1FB7B00B94412 /* image4.png in Resources */ = {isa = PBXBuildFile; fileRef = 440BC75C16B1FB7B00B94412 /* image4.png */; };
 		9A11C42B177685C5001E214B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A11C42A177685C5001E214B /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9A11C42D177685EB001E214B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A11C42C177685EB001E214B /* libsqlite3.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9A11C42F177685FE001E214B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A11C42E177685FE001E214B /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9A11C4311776860C001E214B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A11C4301776860C001E214B /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9A11C43417778505001E214B /* TextPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A11C43217778505001E214B /* TextPickerViewController.xib */; };
+		9A11C43517778505001E214B /* TextPickerViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A11C43317778505001E214B /* TextPickerViewController~ipad.xib */; };
+		9A11C43817778A32001E214B /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A11C43617778A32001E214B /* ViewController.xib */; };
+		9A11C43917778A32001E214B /* ViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A11C43717778A32001E214B /* ViewController~ipad.xib */; };
+		9A11C43B17778A4E001E214B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A11C43A17778A4E001E214B /* InfoPlist.strings */; };
+		9A11C43D17778B28001E214B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A11C43C17778B28001E214B /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,10 +287,8 @@
 		079DC91A15D249F9000510CC /* SaveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaveViewController.xib; sourceTree = "<group>"; };
 		079DC91D15D25478000510CC /* SaveDelagate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveDelagate.h; sourceTree = "<group>"; };
 		079EFCF215E8AAA400BE792C /* SaveViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SaveViewController~ipad.xib"; sourceTree = "<group>"; };
-		079EFCF515E8AABE00BE792C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "TextPicker/zh-Hans.lproj/TextPickerViewController~ipad.xib"; sourceTree = "<group>"; };
 		079EFCF715E8AAD100BE792C /* ShapeViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "ShapeViewController~ipad.xib"; path = "Shape/ShapeViewController~ipad.xib"; sourceTree = "<group>"; };
 		079EFCF915E8AAE600BE792C /* ILColorPickerController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "ILColorPickerController~ipad.xib"; path = "ColorPicker/ILColorPickerController~ipad.xib"; sourceTree = "<group>"; };
-		079EFCFC15E8AB0C00BE792C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/ViewController~ipad.xib"; sourceTree = "<group>"; };
 		079F47FE15E0798600AB4806 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		07B01DD615DB6922004F17EF /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		07B01DD715DB6922004F17EF /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
@@ -308,8 +305,6 @@
 		07B1A5A815CE114D006AC4BA /* TextPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextPickerViewController.h; path = TextPicker/TextPickerViewController.h; sourceTree = "<group>"; };
 		07B1A5A915CE114D006AC4BA /* TextPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextPickerViewController.m; path = TextPicker/TextPickerViewController.m; sourceTree = "<group>"; };
 		07B1A5B515CE3AE0006AC4BA /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow.png; path = TextPicker/arrow.png; sourceTree = "<group>"; };
-		07B1A5B715CE3DFD006AC4BA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/tianhuyang/Desktop/projects/huadufu/huadufuTests/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
-		07B1A5BE15CE3EB2006AC4BA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/TextPickerViewController.xib"; sourceTree = "<group>"; };
 		07B3770E15CA207F004AB14B /* scribble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scribble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B3771215CA207F004AB14B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		07B3771415CA207F004AB14B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -372,14 +367,18 @@
 		07ED6F2616B884DA00B3BEC0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		07ED6F2F16B885EB00B3BEC0 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBUserSettingsViewResources.bundle; path = ../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
 		07ED6F3116B8862500B3BEC0 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
-		440BC75616B1FB3400B94412 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		440BC75916B1FB4E00B94412 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/ViewController.xib"; sourceTree = "<group>"; };
 		440BC75B16B1FB7B00B94412 /* alpha1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alpha1.png; sourceTree = "<group>"; };
 		440BC75C16B1FB7B00B94412 /* image4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image4.png; sourceTree = "<group>"; };
 		9A11C42A177685C5001E214B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		9A11C42C177685EB001E214B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		9A11C42E177685FE001E214B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9A11C4301776860C001E214B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		9A11C43217778505001E214B /* TextPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TextPickerViewController.xib; path = TextPicker/TextPickerViewController.xib; sourceTree = "<group>"; };
+		9A11C43317778505001E214B /* TextPickerViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "TextPickerViewController~ipad.xib"; path = "TextPicker/TextPickerViewController~ipad.xib"; sourceTree = "<group>"; };
+		9A11C43617778A32001E214B /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		9A11C43717778A32001E214B /* ViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ViewController~ipad.xib"; sourceTree = "<group>"; };
+		9A11C43A17778A4E001E214B /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		9A11C43C17778B28001E214B /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,7 +399,6 @@
 				07B3771515CA207F004AB14B /* Foundation.framework in Frameworks */,
 				07B3771715CA207F004AB14B /* CoreGraphics.framework in Frameworks */,
 				07ED6F2716B884DA00B3BEC0 /* FacebookSDK.framework in Frameworks */,
-				079C467716BA6E2D0098985C /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,11 +619,11 @@
 		07B1A5A615CE10EF006AC4BA /* TextPicker */ = {
 			isa = PBXGroup;
 			children = (
+				9A11C43217778505001E214B /* TextPickerViewController.xib */,
+				9A11C43317778505001E214B /* TextPickerViewController~ipad.xib */,
 				07B1A5B515CE3AE0006AC4BA /* arrow.png */,
 				07B1A5A815CE114D006AC4BA /* TextPickerViewController.h */,
 				07B1A5A915CE114D006AC4BA /* TextPickerViewController.m */,
-				07B1A5BD15CE3EA0006AC4BA /* TextPickerViewController.xib */,
-				079EFCF415E8AABE00BE792C /* TextPickerViewController~ipad.xib */,
 				07B0F31615CEE033007E77E5 /* TextPickerDelegate.h */,
 			);
 			name = TextPicker;
@@ -691,6 +689,8 @@
 		07B3771815CA207F004AB14B /* Scribble */ = {
 			isa = PBXGroup;
 			children = (
+				9A11C43617778A32001E214B /* ViewController.xib */,
+				9A11C43717778A32001E214B /* ViewController~ipad.xib */,
 				07B0F32D15CF4B22007E77E5 /* CheckBox.h */,
 				07B0F32E15CF4B22007E77E5 /* CheckBox.m */,
 				079AB59D15DCBCC800584409 /* ZoomButton.h */,
@@ -705,8 +705,6 @@
 				07B3772215CA207F004AB14B /* AppDelegate.m */,
 				07B3772415CA207F004AB14B /* ViewController.h */,
 				07B3772515CA207F004AB14B /* ViewController.m */,
-				440BC75816B1FB4E00B94412 /* ViewController.xib */,
-				079EFCFB15E8AB0C00BE792C /* ViewController~ipad.xib */,
 				07B3771915CA207F004AB14B /* Supporting Files */,
 			);
 			name = Scribble;
@@ -716,7 +714,7 @@
 		07B3771915CA207F004AB14B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				440BC75516B1FB3400B94412 /* InfoPlist.strings */,
+				9A11C43A17778A4E001E214B /* InfoPlist.strings */,
 				07B3771A15CA207F004AB14B /* scribble-Info.plist */,
 				07B3771E15CA207F004AB14B /* main.m */,
 				07B3772015CA207F004AB14B /* scribble-Prefix.pch */,
@@ -728,6 +726,7 @@
 		07B3773915CA207F004AB14B /* ScribbleTests */ = {
 			isa = PBXGroup;
 			children = (
+				9A11C43C17778B28001E214B /* InfoPlist.strings */,
 				07B3773F15CA207F004AB14B /* huadufuTests.h */,
 				07B3774015CA207F004AB14B /* huadufuTests.m */,
 				07B3773A15CA207F004AB14B /* Supporting Files */,
@@ -740,7 +739,6 @@
 			isa = PBXGroup;
 			children = (
 				07B3773B15CA207F004AB14B /* scribbleTests-Info.plist */,
-				07B3773C15CA207F004AB14B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -849,7 +847,7 @@
 		07B3770515CA207F004AB14B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = 07B3770815CA207F004AB14B /* Build configuration list for PBXProject "scribble" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -877,7 +875,6 @@
 			files = (
 				079B556B15CC9DB20018B7BB /* ILColorPickerController.xib in Resources */,
 				07B1A5A315CDCA71006AC4BA /* ShapeViewController.xib in Resources */,
-				07B1A5BB15CE3EA0006AC4BA /* TextPickerViewController.xib in Resources */,
 				07B1A5B615CE3AE0006AC4BA /* arrow.png in Resources */,
 				079DC91C15D249F9000510CC /* SaveViewController.xib in Resources */,
 				0742C34C15DA48FA00E64899 /* pencil.png in Resources */,
@@ -916,12 +913,8 @@
 				0798E3B615E4DBC700351A05 /* app~iPad@2x.png in Resources */,
 				0798E3B815E4DC0300351A05 /* app~iPad.png in Resources */,
 				079EFCF315E8AAA400BE792C /* SaveViewController~ipad.xib in Resources */,
-				079EFCF615E8AABE00BE792C /* TextPickerViewController~ipad.xib in Resources */,
 				079EFCF815E8AAD100BE792C /* ShapeViewController~ipad.xib in Resources */,
 				079EFCFA15E8AAE600BE792C /* ILColorPickerController~ipad.xib in Resources */,
-				079EFCFD15E8AB0C00BE792C /* ViewController~ipad.xib in Resources */,
-				440BC75716B1FB3400B94412 /* InfoPlist.strings in Resources */,
-				440BC75A16B1FB4E00B94412 /* ViewController.xib in Resources */,
 				440BC75D16B1FB7B00B94412 /* alpha1.png in Resources */,
 				440BC75E16B1FB7B00B94412 /* image4.png in Resources */,
 				07C9A7AE16B25BEF006C2957 /* LibraryViewController.xib in Resources */,
@@ -966,6 +959,12 @@
 				0757A5CC16B7841B00701609 /* FBNewsTableCell.xib in Resources */,
 				07ED6F3016B885EB00B3BEC0 /* FBUserSettingsViewResources.bundle in Resources */,
 				07ED6F3216B8862500B3BEC0 /* FacebookSDKResources.bundle in Resources */,
+				9A11C43417778505001E214B /* TextPickerViewController.xib in Resources */,
+				9A11C43517778505001E214B /* TextPickerViewController~ipad.xib in Resources */,
+				9A11C43817778A32001E214B /* ViewController.xib in Resources */,
+				9A11C43917778A32001E214B /* ViewController~ipad.xib in Resources */,
+				9A11C43B17778A4E001E214B /* InfoPlist.strings in Resources */,
+				9A11C43D17778B28001E214B /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -973,7 +972,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07B3773E15CA207F004AB14B /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1063,58 +1061,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		079EFCF415E8AABE00BE792C /* TextPickerViewController~ipad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				079EFCF515E8AABE00BE792C /* zh-Hans */,
-			);
-			name = "TextPickerViewController~ipad.xib";
-			sourceTree = "<group>";
-		};
-		079EFCFB15E8AB0C00BE792C /* ViewController~ipad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				079EFCFC15E8AB0C00BE792C /* zh-Hans */,
-			);
-			name = "ViewController~ipad.xib";
-			sourceTree = "<group>";
-		};
-		07B1A5BD15CE3EA0006AC4BA /* TextPickerViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				07B1A5BE15CE3EB2006AC4BA /* zh-Hans */,
-			);
-			name = TextPickerViewController.xib;
-			path = TextPicker;
-			sourceTree = "<group>";
-		};
-		07B3773C15CA207F004AB14B /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				07B1A5B715CE3DFD006AC4BA /* zh-Hans */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		440BC75516B1FB3400B94412 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				440BC75616B1FB3400B94412 /* zh-Hans */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		440BC75816B1FB4E00B94412 /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				440BC75916B1FB4E00B94412 /* zh-Hans */,
-			);
-			name = ViewController.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		07B3774215CA207F004AB14B /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1125,6 +1071,10 @@
 					armv6,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Tianhu Yang";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tianhu Yang (9Z55DS3299)";
@@ -1159,6 +1109,10 @@
 					armv6,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Tianhu Yang";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tianhu Yang (9Z55DS3299)";
@@ -1183,7 +1137,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
@@ -1196,7 +1151,6 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = scribble;
-				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1206,7 +1160,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tianhu Yang (9Z55DS3299)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
@@ -1219,7 +1174,6 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = scribble;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3C084EE4-32C5-4839-B94A-326BFD5B88BF";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

@@ -51,8 +51,9 @@ static const int ROTATE=3;
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
-    CGContextSetShouldAntialias(context, true);
     CGContextSetAllowsAntialiasing(context, true);
+    CGContextSetShouldAntialias(context, true);
+    
     [super drawRect:area];
     // We have to turn it back off since it's not saved in graphic state.
     CGContextSetAllowsAntialiasing(context, false);
@@ -83,7 +84,7 @@ static const int ROTATE=3;
     
     self.backgroundColor=[UIColor clearColor];
     self.contentMode=UIViewContentModeRedraw;
-    self.clipsToBounds=YES;
+    //self.clipsToBounds=YES;
     focus=YES;
     CGRect rect=self.bounds;
     markWidth=globalKit.viewMarkWidth;

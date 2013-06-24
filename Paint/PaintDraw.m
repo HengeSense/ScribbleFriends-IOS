@@ -148,6 +148,7 @@ enum FROM{
     [self presentTexture];
     drawViewRatio.width=backingWidth/textureSize.width;
     drawViewRatio.height=backingHeight/textureSize.height;
+    globalKit.canvasSize = CGSizeMake(backingWidth, backingHeight);
 }
 
 -(void) clear:(UIImage *)image

@@ -28,18 +28,15 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        selectedColor=[UIColor colorWithRed:170.f/255 green:170.f/255 blue:170.f/255 alpha:1.0f];
+        fbNewsHandler=[[FBNewsHandler alloc] init];
     }
     return self;
 }
 
-- (id)init
++ (FBNewsViewController*) defaultNewsViewController
 {
-    self=[super init];
-    self=[self initWithNibName:@"FBNewsViewController" bundle:nil];
-    selectedColor=[UIColor colorWithRed:170.f/255 green:170.f/255 blue:170.f/255 alpha:1.0f]; 
-    fbNewsHandler=[[FBNewsHandler alloc] init];
-    return self;
+     return [[FBNewsViewController alloc] initWithNibName:@"FBNewsViewController" bundle:nil];
 }
 
 - (void)viewDidLoad
@@ -76,6 +73,7 @@
      Code to actually refresh goes here.
      
      */
+    
     self.pullTableView.pullLastRefreshDate = [NSDate date];
     self.pullTableView.pullTableIsRefreshing = NO;
 }
@@ -112,7 +110,7 @@
         /*cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         CGRect rect=cell.contentView.bounds;
-        rect.origin.x=10;  
+        rect.origin.x=10;    
         rect.origin.y=10;
         rect.size.width-=2*rect.origin.x;
         rect.size.height=tableView.rowHeight-rect.origin.y;
@@ -166,6 +164,7 @@
 
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
+    [fbNewsHandler requestNewsSession];
     [self performSelector:@selector(refreshTable) withObject:nil afterDelay:3.0f];
 }
 

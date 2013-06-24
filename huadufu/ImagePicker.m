@@ -85,7 +85,7 @@
                 [viewController presentModalViewController:libraryViewController animated:YES];
             }
             else if (buttonIndex==1){//Facebook
-                FBNewsViewController *newsVC=[[FBNewsViewController alloc] init];
+                FBNewsViewController *newsVC=[FBNewsViewController defaultNewsViewController];
                 newsVC.fbNewsDelegate=self;
                 [viewController presentModalViewController:newsVC animated:YES];
                 //[self pickedImage:img];
@@ -103,7 +103,7 @@
             }
             else if (buttonIndex==1){//Facebook
                 newMode=NEWMODEIMAGE;
-                FBNewsViewController *newsVC=[[FBNewsViewController alloc] init];
+                FBNewsViewController *newsVC=[FBNewsViewController defaultNewsViewController];
                 newsVC.fbNewsDelegate=self;
                 [viewController presentModalViewController:newsVC animated:YES];
             }

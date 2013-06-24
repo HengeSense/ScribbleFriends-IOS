@@ -23,6 +23,7 @@
 @synthesize maxScale;
 @synthesize homedoc;
 @synthesize libraryInfo;
+@synthesize canvasSize;
 
 - (float *) initBackColor
 {
