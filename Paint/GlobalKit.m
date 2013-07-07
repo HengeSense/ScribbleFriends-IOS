@@ -8,6 +8,9 @@
 
 #import "GlobalKit.h"
 
+#define IS_RETINA ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0))
+#define ToolBarHeight 40
+
 @interface GlobalKit()
 {
     float initBackColorf[4];
@@ -34,14 +37,15 @@
     isiPhone=[[UIDevice currentDevice] userInterfaceIdiom]==UIUserInterfaceIdiomPhone; 
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     homedoc = [paths objectAtIndex:0];
+    CGSize winSize = [UIScreen mainScreen].bounds.size;
     if (isiPhone) {
         viewMarkWidth=32;
         sketchViewRect.size.width=100;
         sketchViewRect.size.height=100;
         sketchViewRect.origin.x=200;
         sketchViewRect.origin.y=0;
-        maxTetureSize.height=1024;
-        maxTetureSize.width=1024;
+        maxTetureSize.height=(winSize.height - ToolBarHeight * 2) > 1024 ? 2048 : 1024;
+        maxTetureSize.width=winSize.width > 1024 ? 2048 : 1024;
         libraryInfo.x=0;
         libraryInfo.cols=4;
     }

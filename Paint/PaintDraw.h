@@ -22,6 +22,17 @@
 #define DRAWMODEIMAGE 4
 #define DRAWMODEABSORB 5
 
+enum{
+    kPDSwitchModePresent = 0,
+    kPDSwitchModeSampleFramebuffer,
+    kPDSwitchModeSampleFramebufferSpace,
+    kPDSwitchModeUndoTexture,
+    kPDSwitchModeUndoTextureFull,
+    kPDSwitchModeSampleFramebufferFull,
+    kPDSwitchModeTexture,
+    kPDSwitchModeTextureSpace
+};
+
 typedef struct{
     unsigned x;
     unsigned y;
@@ -63,8 +74,9 @@ typedef struct{
 - (void) writeImage:(TextureData *)textureData;
 - (void) zoomIn:(BOOL) yesOrNO;
 - (UIImage*) resizeImage:(UIImage*)image;
-- (void) swap;
+- (void) swapToUndoFromTexture;
 - (void) resolveSample;
-- (void) swapToSample;
+- (void) swapToSampleFromTexture;
+- (void) swapToSampleFromUndo;
 - (int (*)[2]) getMeasure;
 @end

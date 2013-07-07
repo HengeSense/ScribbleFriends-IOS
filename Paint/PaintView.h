@@ -34,4 +34,5 @@
 - (void) operate:(unsigned)type;
 - (void) clear:(UIImage *)image;
 - (void) drawImage:(UIImage*)image;
+- (void) initUI;
 @end

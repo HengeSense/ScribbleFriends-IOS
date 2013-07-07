@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1296</int>
-		<string key="IBDocument.SystemVersion">11D50</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
-		<string key="IBDocument.AppKitVersion">1138.32</string>
-		<string key="IBDocument.HIToolboxVersion">568.00</string>
+		<int key="IBDocument.SystemTarget">1552</int>
+		<string key="IBDocument.SystemVersion">11G63b</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1138.51</string>
+		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1181</string>
+			<string key="NS.object.0">2083</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
-			<string>IBUISlider</string>
+			<string>IBProxyObject</string>
 			<string>IBUIButton</string>
 			<string>IBUIImageView</string>
+			<string>IBUISlider</string>
 			<string>IBUIView</string>
-			<string>IBProxyObject</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -50,6 +50,7 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{20, 5}, {69, 30}}</string>
 										<reference key="NSSuperview" ref="991305466"/>
+										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="319850565"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
@@ -89,6 +90,7 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{89, 5}, {69, 30}}</string>
 										<reference key="NSSuperview" ref="991305466"/>
+										<reference key="NSWindow"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<int key="IBUITag">21</int>
@@ -111,6 +113,7 @@
 								</array>
 								<string key="NSFrame">{{296, 664}, {177, 40}}</string>
 								<reference key="NSSuperview" ref="32313888"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="908301020"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor" id="290450556">
@@ -124,6 +127,7 @@
 								<int key="NSvFlags">-2147483356</int>
 								<string key="NSFrame">{{-2, 911}, {772, 23}}</string>
 								<reference key="NSSuperview" ref="32313888"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="991305466"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -136,6 +140,7 @@
 						</array>
 						<string key="NSFrameSize">{768, 976}</string>
 						<reference key="NSSuperview" ref="774585933"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="182716081"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -143,7 +148,7 @@
 				</array>
 				<string key="NSFrameSize">{768, 1024}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSNextKeyView"/>
+				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">2</int>
 					<bytes key="NSRGB">MC4wNTg4MjM1MzMzNiAwLjExMzcyNTQ5ODMgMC4yNjI3NDUxMTIyAA</bytes>
@@ -152,7 +157,7 @@
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
 			<object class="IBUIView" id="24137620">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIButton" id="417846810">
@@ -684,14 +689,13 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{768, 48}</string>
-				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="417846810"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<reference key="IBUIBackgroundColor" ref="290450556"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
 			<object class="IBUIView" id="651073058">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">-2147483356</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIButton" id="771155723">
@@ -853,14 +857,13 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{256, 48}</string>
-				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="352556030"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<reference key="IBUIBackgroundColor" ref="290450556"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
 			<object class="IBUIView" id="1035780810">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">-2147483356</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIButton" id="130726387">
@@ -1055,7 +1058,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{354, 48}</string>
-				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="130726387"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<reference key="IBUIBackgroundColor" ref="290450556"/>
@@ -1965,12 +1967,163 @@
 			<nil key="sourceID"/>
 			<int key="maxID">174</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">CheckBox</string>
+					<string key="superclassName">UIButton</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/CheckBox.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">MoveButton</string>
+					<string key="superclassName">UIButton</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/MoveButton.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">PaintView</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/PaintView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">TouchButton</string>
+					<string key="superclassName">UIButton</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/TouchButton.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">ViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">alphaSliderValueChanged:</string>
+						<string key="NS.object.0">UISlider</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">alphaSliderValueChanged:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">alphaSliderValueChanged:</string>
+							<string key="candidateClassName">UISlider</string>
+						</object>
+					</object>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="alphaSlider">UISlider</string>
+						<string key="firstSelectedButton">MoveButton</string>
+						<string key="imagePropotionalButton">CheckBox</string>
+						<string key="imageToolbarView">UIView</string>
+						<string key="paintView">PaintView</string>
+						<string key="redoButton">UIButton</string>
+						<string key="redoButtonImage">UIImageView</string>
+						<string key="textBackgroundButton">UIButton</string>
+						<string key="textForegroundButton">UIButton</string>
+						<string key="textSelectedButton">CheckBox</string>
+						<string key="textToolbarView">UIView</string>
+						<string key="toolBarView">UIView</string>
+						<string key="undoButton">UIButton</string>
+						<string key="undoButtonImage">UIImageView</string>
+						<string key="zoomButtonView">UIView</string>
+						<string key="zoomInButton">ZoomButton</string>
+						<string key="zoomOutButton">ZoomButton</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="alphaSlider">
+							<string key="name">alphaSlider</string>
+							<string key="candidateClassName">UISlider</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="firstSelectedButton">
+							<string key="name">firstSelectedButton</string>
+							<string key="candidateClassName">MoveButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="imagePropotionalButton">
+							<string key="name">imagePropotionalButton</string>
+							<string key="candidateClassName">CheckBox</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="imageToolbarView">
+							<string key="name">imageToolbarView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="paintView">
+							<string key="name">paintView</string>
+							<string key="candidateClassName">PaintView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="redoButton">
+							<string key="name">redoButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="redoButtonImage">
+							<string key="name">redoButtonImage</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="textBackgroundButton">
+							<string key="name">textBackgroundButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="textForegroundButton">
+							<string key="name">textForegroundButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="textSelectedButton">
+							<string key="name">textSelectedButton</string>
+							<string key="candidateClassName">CheckBox</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="textToolbarView">
+							<string key="name">textToolbarView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="toolBarView">
+							<string key="name">toolBarView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="undoButton">
+							<string key="name">undoButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="undoButtonImage">
+							<string key="name">undoButtonImage</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="zoomButtonView">
+							<string key="name">zoomButtonView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="zoomInButton">
+							<string key="name">zoomInButton</string>
+							<string key="candidateClassName">ZoomButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="zoomOutButton">
+							<string key="name">zoomOutButton</string>
+							<string key="candidateClassName">ZoomButton</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/ViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">ZoomButton</string>
+					<string key="superclassName">UIButton</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/ZoomButton.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1296" key="NS.object.0"/>
+			<real value="1552" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
@@ -1998,6 +2151,6 @@
 			<string key="zoom_in.png">{115, 49}</string>
 			<string key="zoom_out.png">{115, 49}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1181</string>
+		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>

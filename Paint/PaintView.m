@@ -43,38 +43,43 @@
     
 }
 
-- (id)initWithCoder:(NSCoder*)coder {	
+- (void) initUI
+{
+    paintDraw=[[PaintDraw alloc] initWith:self];
+    brush=[[Brush alloc] initWith:self];
+    paintTouch=[[PaintTouch alloc] initWith:self];
+    undoManager=[[UndoManager alloc] initWith:self];
+    undoManager.changeDelegate=self;
+    CGRect rect=CGRectMake(0, 0, 200, 200);
+    textView=[[TextView alloc] initWithFrame:rect];
+    textView.center=self.center;
     
-    if ((self = [super initWithCoder:coder])) {        
+    imageView=[[ImageView alloc] initWithFrame:rect];
+    imageView.imageView.image=[UIImage imageNamed:@"test.png"];
+    imageView.center=self.center;
+    
+    absorbView=[[AbsorbView alloc] initWithFrame:rect];
+    absorbView.center=self.center;
+    
+    rect=globalKit.sketchViewRect;
+    rect.size.height=rect.size.width*self.bounds.size.height/
+    self.bounds.size.width;
+    rect.size.width+=2;
+    rect.size.height+=2;
+    sketchView=[[SketchView alloc] initWithFrame:rect];
+    
+    [self addSubview:textView];textView.hidden=true;
+    [self addSubview:imageView];imageView.hidden=true;
+    [self addSubview:sketchView];sketchView.hidden=true;
+    [self addSubview:absorbView];absorbView.hidden=true;
+}
+
+- (id)initWithCoder:(NSCoder*)coder {
+    
+    if ((self = [super initWithCoder:coder])) {
         
         self.clipsToBounds = YES; 
-        paintDraw=[[PaintDraw alloc] initWith:self];
-        brush=[[Brush alloc] initWith:self];
-        paintTouch=[[PaintTouch alloc] initWith:self];
-        undoManager=[[UndoManager alloc] initWith:self];
-        undoManager.changeDelegate=self;
-        CGRect rect=CGRectMake(0, 0, 200, 200);
-        textView=[[TextView alloc] initWithFrame:rect]; 
-        textView.center=self.center;
         
-        imageView=[[ImageView alloc] initWithFrame:rect];
-        imageView.imageView.image=[UIImage imageNamed:@"test.png"];
-        imageView.center=self.center;     
-        
-        absorbView=[[AbsorbView alloc] initWithFrame:rect];
-        absorbView.center=self.center;
-        
-        rect=globalKit.sketchViewRect;
-        rect.size.height=rect.size.width*self.bounds.size.height/
-        self.bounds.size.width;
-        rect.size.width+=2;
-        rect.size.height+=2;
-        sketchView=[[SketchView alloc] initWithFrame:rect];
-
-        [self addSubview:textView];textView.hidden=true;
-        [self addSubview:imageView];imageView.hidden=true;
-        [self addSubview:sketchView];sketchView.hidden=true;
-        [self addSubview:absorbView];absorbView.hidden=true;
 	}
 	
 	return self;

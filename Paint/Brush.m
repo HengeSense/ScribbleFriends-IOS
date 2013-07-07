@@ -13,6 +13,8 @@
 #import "DynamicArray.h"
 #define defaultOpacity		0.5f
 #define defaultPixelStep		1.0f
+#define PointsMaxSize 10000
+#define ArcMaxSize (int)(2 * sizeof(GLfloat) * (100 * M_PI + 2))
 
 const int BRUSH_PENCIL=0;
 const int BRUSH_BRUSH=1;
@@ -27,7 +29,12 @@ const int BRUSH_ERASER=2;
     float pointSize;
     CGPoint lowerPoint,upperPoint;
     float lineWidth;
+    float realWidth;//real width when drawing
     float colorf[4];
+    CGPoint  points[PointsMaxSize];
+    float smoothPointSize[2];
+    GLfloat arc_vertices[ArcMaxSize];
+    int pos;
 }
 
 @end
@@ -57,6 +64,10 @@ const int BRUSH_ERASER=2;
     colorf[3]=0.5;
     self.brushColor=[UIColor redColor];    
     self.brushMode=BRUSH_PENCIL;
+    //
+    
+    glGetFloatv(GL_SMOOTH_POINT_SIZE_RANGE, (float *)&smoothPointSize);
+    
     return self;
 }
 
@@ -174,7 +185,21 @@ const int BRUSH_ERASER=2;
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, paintDraw.viewRenderBuffer);
     [paintDraw.context presentRenderbuffer:GL_RENDERBUFFER_OES];*/
     //
-    [paintDraw switchMode:1];
+    if (pos >= PointsMaxSize) {
+        return;
+    }
+    else if (pos > 0)
+    {
+        CGPoint point = points[pos - 1];
+        if (point.x == start.x && point.y == start.y ) {// start point and last point are the same
+            if ((end.x - point.x) * (end.x - point.x) + (end.y - point.y) * (end.y - point.y) < lineWidth * lineWidth / 4) {
+                //return;
+            }
+            
+        }
+    }
+    
+    [paintDraw switchMode:kPDSwitchModeTexture];
     [self updatePoint:start];
     [self updatePoint:end];
     start.x*=paintView.contentScaleFactor;
@@ -182,9 +207,11 @@ const int BRUSH_ERASER=2;
     end.x*=paintView.contentScaleFactor;
     end.y*=paintView.contentScaleFactor;
 	[self drawSolidLine:start third:end];
-    [paintDraw resolveSample];
+    points[pos++] = start;
+    points[pos++] = end;
     [paintDraw presentTexture];
-	
+    //
+    
 }
 
 - (void) drawBegan:(CGPoint)loc
@@ -198,17 +225,28 @@ const int BRUSH_ERASER=2;
 
 - (void) prepare
 {
-    glBindFramebufferOES(GL_FRAMEBUFFER_OES, paintDraw.sampleFramebuffer);
+    pos = 0;
+    realWidth = lineWidth*paintDraw.maxScale*paintDraw.scale;
+    glBindFramebufferOES(GL_FRAMEBUFFER_OES, paintDraw.textureFrameBuffer);
     glClear(GL_DEPTH_BUFFER_BIT);
-    [paintDraw swap];
-    [paintDraw swapToSample];
+    [paintDraw swapToUndoFromTexture];
 }
 
 - (void) drawDot:(CGPoint)loc
 {
-    glDisable(GL_TEXTURE_2D);
+    // draw points into SampleFramebuffer
+    [paintDraw swapToSampleFromUndo];
+    glBindFramebufferOES(GL_FRAMEBUFFER_OES, paintDraw.sampleFramebuffer);
+    glClear(GL_DEPTH_BUFFER_BIT);
+    [paintDraw switchMode:kPDSwitchModeSampleFramebuffer];
+    for(int i = 0; i < pos; i += 2)
+    {
+        [self drawSolidLine:points[i] third:points[i + 1]];
+    }
+    //
+    
     glEnable(GL_DEPTH_TEST);
-    [paintDraw switchMode:1];
+    [paintDraw switchMode:kPDSwitchModeSampleFramebuffer];
     [self updatePoint:loc]; 
     float width=lineWidth*paintDraw.maxScale*paintDraw.scale;
     loc.x*=paintView.contentScaleFactor;
@@ -269,16 +307,32 @@ const int BRUSH_ERASER=2;
         upperPoint.y=point.y;
 }
 
+-(void) drawArc1:(unsigned int const)segments x:(float)x y:(float)y r:(float)r
+{
+    // If larger than smooth point size, we draw as circle w. GL_TRIANGLE_FAN
+    float d = 2 * r;
+    if (d < smoothPointSize[1])
+    {
+        //[self fillArc:segments x:x y:y r:r];
+    }
+    else  // else we use GL_POINT_SMOOTH for anti-aliased "circle"
+    {
+        float p[] = {x, y};
+        glPointSize(d);
+        glVertexPointer(2, GL_FLOAT, 0, &p);
+        glDrawArrays(GL_POINTS, 0, 1);
+    }
+}
+
 -(void)drawArc:(unsigned int const)segments x:(float)x y:(float)y r:(float)r
 {
     int i;
     float const angle_step = 2*M_PI /segments;
     
-    GLfloat *arc_vertices;
-    arc_vertices = malloc(2*sizeof(GLfloat) * (segments+2));
+    /*arc_vertices = malloc(2*sizeof(GLfloat) * (segments+2));
     if (!arc_vertices) {
         return;
-    }
+    }*/
     arc_vertices[0] = x;
     arc_vertices[1] = y;
     
@@ -289,13 +343,13 @@ const int BRUSH_ERASER=2;
     //printf("%f %f %f\n",x,y,r);
     glVertexPointer(2, GL_FLOAT, 0, arc_vertices);
     glDrawArrays(GL_TRIANGLE_FAN, 0, segments+2);    
-    free(arc_vertices);
+   // free(arc_vertices);
 }
 
 
 -(void)drawSolidLine:(CGPoint)second third:(CGPoint)third
 {
-    GLfloat lineVertices[8],width=lineWidth*paintDraw.maxScale*paintDraw.scale; 
+    GLfloat lineVertices[8]; 
     CGPoint dir, tan;    
     //
     dir.x = third.x - second.x;
@@ -305,8 +359,8 @@ const int BRUSH_ERASER=2;
     {
         dir.x = dir.x/len;
         dir.y = dir.y/len;
-        tan.x = -width*dir.y/2.0f;
-        tan.y = width*dir.x/2.0f;
+        tan.x = -realWidth*dir.y/2.0f;
+        tan.y = realWidth*dir.x/2.0f;
     }
     else {
         return;
@@ -323,7 +377,7 @@ const int BRUSH_ERASER=2;
     glEnable(GL_DEPTH_TEST);
     glVertexPointer(2, GL_FLOAT, 0, lineVertices);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    [self drawArc:width*M_PI x:second.x y:second.y r:width/2.0f];
+    [self drawArc:realWidth*M_PI x:second.x y:second.y r:realWidth/2.0f];
     glDisable(GL_DEPTH_TEST);
 }
 

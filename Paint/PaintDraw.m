@@ -18,6 +18,8 @@ static float const textCoords[] = {
     1.0f, 0.0f
 };
 
+#define ZoomStep 0.1f
+
 static int measure[2][2];
 enum FROM{
     FROM_COLOR,FROM_IMAGE
@@ -29,7 +31,7 @@ enum FROM{
 	GLint backingHeight;	
 	CGPoint scaleStart;   
 	GLuint depthRenderBuffer,textureDepthBuffer,undoDepthBuffer;
-    GLuint sampleColorRenderbuffer, sampleDepthRenderbuffer;
+    GLuint sampleColorRenderbuffer, sampleDepthRenderbuffer, sampleTexture;
     float backColorf[4];
     unsigned drawViewDataLength;
     void *drawViewData;
@@ -91,7 +93,8 @@ enum FROM{
     //
     //glEnable(GL_POINT_SPRITE_OES);
     //glTexEnvf(GL_POINT_SPRITE_OES, GL_COORD_REPLACE_OES, GL_TRUE);		
-    glHint (GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);   
+    glHint (GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+    //glEnable(GL_POINT_SMOOTH);
     
     [self initBuffers];
     return self;
@@ -112,26 +115,26 @@ enum FROM{
 {
     float dummy=1/self.scale;
     if (yesOrNO) {
-        dummy-=.25f;
+        dummy-=ZoomStep;
         
     }
     else {
-        dummy+=.25f;
+        dummy+=ZoomStep;
         
     }
-    if (dummy>maxScale||dummy<1.0f) {
+    if (dummy > maxScale||dummy<.5f) {
         return;
     }
     self.scale=1/dummy;
     if (yesOrNO) {
         [paintDelegate canZoomOut:YES];
-        if (dummy-.25f<=1.0f) {
+        if (dummy-ZoomStep<.5f) {
             [paintDelegate canZoomIn:NO];
         }
     }
     else {
         [paintDelegate canZoomIn:YES];
-        if (dummy+.25f>=maxScale) {
+        if (dummy+ZoomStep>maxScale) {
             [paintDelegate canZoomOut:NO];
         }
     }
@@ -213,7 +216,7 @@ enum FROM{
     float ratio=scale*maxScale;
     glDisable(GL_SCISSOR_TEST);
     switch (mode) {
-        case 0://present
+        case 0://kPDSwitchModePresent
             glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFrameBuffer);        
             glMatrixMode(GL_PROJECTION); 
             glLoadIdentity();
@@ -221,25 +224,7 @@ enum FROM{
             glViewport(0, 0, size.width, size.height);
             glMatrixMode(GL_MODELVIEW);
             break;
-//        case 1://texture
-//            glBindFramebufferOES(GL_FRAMEBUFFER_OES, textureFrameBuffer);
-//            glMatrixMode(GL_PROJECTION); 
-//            glLoadIdentity();
-//            glOrthof(0, size.width, 0, size.height, -1, 1);
-//            glViewport(scaleStart.x, scaleStart.y, space.width/ratio, space.height/ratio);         
-//            glMatrixMode(GL_MODELVIEW);
-//            if(from==FROM_IMAGE)
-//                glEnable(GL_SCISSOR_TEST);
-//            break;
-//        case 2://texture full space
-//            glBindFramebufferOES(GL_FRAMEBUFFER_OES, textureFrameBuffer);
-//            glMatrixMode(GL_PROJECTION); 
-//            glLoadIdentity();
-//            glOrthof(0, space.width, 0, space.height, -1, 1);
-//            glViewport(0, 0, space.width, space.height);         
-//            glMatrixMode(GL_MODELVIEW);
-//            break;
-        case 3://undotexture
+        case 3://kPDSwitchModeUndoTexture
             glBindFramebufferOES(GL_FRAMEBUFFER_OES, undoFrameBuffer);
             glMatrixMode(GL_PROJECTION); 
             glLoadIdentity();
@@ -247,7 +232,7 @@ enum FROM{
             glViewport(scaleStart.x, scaleStart.y, space.width/ratio, space.height/ratio);         
             glMatrixMode(GL_MODELVIEW);
             break;
-        case 4://swap to undoTexture
+        case 4://kPDSwitchModeUndoTextureFull
             glBindFramebufferOES(GL_FRAMEBUFFER_OES, undoFrameBuffer);
             glMatrixMode(GL_PROJECTION); 
             glLoadIdentity();
@@ -255,7 +240,7 @@ enum FROM{
             glViewport(0, 0, textureSize.width, textureSize.height);         
             glMatrixMode(GL_MODELVIEW);
             break;
-        case 5://swap to sampleFramebuffer
+        case 5://kPDSwitchModeSampleFramebufferFull
             glBindFramebufferOES(GL_FRAMEBUFFER_OES, sampleFramebuffer);
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
@@ -263,7 +248,7 @@ enum FROM{
             glViewport(0, 0, textureSize.width, textureSize.height);
             glMatrixMode(GL_MODELVIEW);
             break;
-        case 1://texture
+        case 1://kPDSwitchModeSampleFramebuffer
             glBindFramebufferOES(GL_FRAMEBUFFER_OES, sampleFramebuffer);
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
@@ -273,8 +258,26 @@ enum FROM{
             if(from==FROM_IMAGE)
                 glEnable(GL_SCISSOR_TEST);
             break;
-        case 2://texture full space
+        case 2://kPDSwitchModeSampleFramebufferSpace
             glBindFramebufferOES(GL_FRAMEBUFFER_OES, sampleFramebuffer);
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            glOrthof(0, space.width, 0, space.height, -1, 1);
+            glViewport(0, 0, space.width, space.height);
+            glMatrixMode(GL_MODELVIEW);
+            break;
+        case 6://kPDSwitchModeTexture
+            glBindFramebufferOES(GL_FRAMEBUFFER_OES, textureFrameBuffer);
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            glOrthof(0, size.width, 0, size.height, -1, 1);
+            glViewport(scaleStart.x, scaleStart.y, space.width/ratio, space.height/ratio);
+            glMatrixMode(GL_MODELVIEW);
+            if(from==FROM_IMAGE)
+                glEnable(GL_SCISSOR_TEST);
+            break;
+        case 7://kPDSwitchModeTextureSpace
+            glBindFramebufferOES(GL_FRAMEBUFFER_OES, textureFrameBuffer);
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
             glOrthof(0, space.width, 0, space.height, -1, 1);
@@ -292,7 +295,7 @@ enum FROM{
     [self switchMode:NO];    
     glEnable(GL_TEXTURE_2D);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-    glBindTexture(GL_TEXTURE_2D, texture); 
+    glBindTexture(GL_TEXTURE_2D, texture);
     glDisable(GL_BLEND);         
     
     CGSize size=CGSizeMake(backingWidth, backingHeight);
@@ -332,7 +335,7 @@ enum FROM{
     glResolveMultisampleFramebufferAPPLE();
 }
 
-- (void) swapToSample
+- (void) swapToSampleFromTexture
 {
     [self switchMode:5u];
     glEnable(GL_TEXTURE_2D);
@@ -358,7 +361,33 @@ enum FROM{
     glEnable(GL_BLEND);
 }
 
-- (void) swap
+- (void) swapToSampleFromUndo
+{
+    [self switchMode:5u];
+    glEnable(GL_TEXTURE_2D);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glDisable(GL_BLEND);
+    glBindTexture(GL_TEXTURE_2D, undoTexture);
+    
+    CGSize size=textureSize;
+    GLfloat vertices[] = {
+        0, size.height,
+        size.width, size.height,
+        0,  0,
+        size.width,  0,
+    };
+    glVertexPointer(2, GL_FLOAT, 0, vertices);
+    glTexCoordPointer(2, GL_FLOAT, 0, textCoords);
+    GLfloat color[4];
+    glGetFloatv(GL_CURRENT_COLOR,color);
+    glColor4f(1.0, 1.0, 1.0, 1.0);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    glColor4f(color[0], color[1], color[2], color[3]);
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+    glEnable(GL_BLEND);
+}
+
+- (void) swapToUndoFromTexture
 {
     [self switchMode:4u];    
     glEnable(GL_TEXTURE_2D);
@@ -383,6 +412,7 @@ enum FROM{
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     glEnable(GL_BLEND);
 }
+
 
 - (void) refreshTextureSize
 {
@@ -482,6 +512,13 @@ enum FROM{
 {
     glGenFramebuffers(1, &sampleFramebuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, sampleFramebuffer);
+    
+    glGenTextures(1, &sampleTexture);
+    glBindTexture(GL_TEXTURE_2D, sampleTexture);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,  textureSize.width, textureSize.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glFramebufferTexture2DOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_TEXTURE_2D, sampleTexture, 0);
     
     glGenRenderbuffers(1, &sampleColorRenderbuffer);
     glBindRenderbuffer(GL_RENDERBUFFER, sampleColorRenderbuffer);
@@ -693,7 +730,7 @@ enum FROM{
 - (void) draw:(void *)data size:(CGSize)size points:(CGPoint[4])points mode:(unsigned)mode
 {
     GLuint aTexture;
-    [self swapToSample];
+    [self swapToSampleFromTexture];
     [self switchMode:mode];
     glEnable(GL_TEXTURE_2D);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
