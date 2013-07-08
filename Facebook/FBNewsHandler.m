@@ -20,6 +20,9 @@ NSString *second = @",'photo':'SELECT  src,images,pid FROM photo where pid IN (S
 
 @end
 @implementation FBNewsHandler
+
+@synthesize delegate;
+
 - (void) requestNewsSession
 {
     newsFeed=NO;
@@ -59,7 +62,7 @@ NSString *second = @",'photo':'SELECT  src,images,pid FROM photo where pid IN (S
         
     } 
     else {
-        [self processData:result];
+        [delegate onLoadData:[self processData:result]];
     }
 }
 

@@ -38,11 +38,6 @@
 }
 
 
-- (void) drawRect:(CGRect)rect
-{
-    
-}
-
 - (void) initUI
 {
     paintDraw=[[PaintDraw alloc] initWith:self];

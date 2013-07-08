@@ -81,8 +81,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    
     
     //
     textForegroundButton.layer.cornerRadius=2.0f;
@@ -93,15 +91,16 @@
     textBackgroundButton.layer.borderColor=[UIColor grayColor].CGColor;
     //
     imagePropotionalButton.selected=YES;
-    [self.paintView bringSubviewToFront:alphaSlider];
-    self.paintView.undoManager.undoManagerDelegate=self;
-    self.paintView.paintDraw.paintDelegate=self;
     
     self.firstSelectedButton.selected=YES;
 }
 
 - (void) initUI
 {
+    [self.paintView bringSubviewToFront:alphaSlider];
+    self.paintView.undoManager.undoManagerDelegate=self;
+    self.paintView.paintDraw.paintDelegate=self;
+    
     CGRect frame=self.toolBarView.frame;
     frame.origin.x=0;
     frame.origin.y=self.view.bounds.size.height-frame.size.height;
@@ -123,8 +122,9 @@
 
 - (void) viewDidLayoutSubviews
 {
-    [self initUI];
     [paintView initUI];
+    [self initUI];
+    
 }
 
 - (void)viewDidUnload

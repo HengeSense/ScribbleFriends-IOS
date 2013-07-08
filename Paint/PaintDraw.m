@@ -128,13 +128,13 @@ enum FROM{
     self.scale=1/dummy;
     if (yesOrNO) {
         [paintDelegate canZoomOut:YES];
-        if (dummy-ZoomStep<.5f) {
+        if (dummy-ZoomStep<=.5f) {
             [paintDelegate canZoomIn:NO];
         }
     }
     else {
         [paintDelegate canZoomIn:YES];
-        if (dummy+ZoomStep>maxScale) {
+        if (dummy+ZoomStep>=maxScale) {
             [paintDelegate canZoomOut:NO];
         }
     }

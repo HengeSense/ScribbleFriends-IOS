@@ -14,6 +14,7 @@
     UIColor *textColor;
     UIColor *textBlue;
     UIColor *timeColor;
+    
 }
 
 @end
@@ -42,6 +43,7 @@
         backView.frame=frame;
         [self.contentView addSubview:backView];
         self.selectionStyle=UITableViewCellSelectionStyleNone;
+        //
         NSMutableAttributedString *attString=[[NSMutableAttributedString alloc] initWithString:@"<b>bold</b> and <i>italic</i> style"];
         [attString addAttribute:(NSString *)kCTForegroundColorAttributeName  
                             value:(id)textColor.CGColor   
@@ -49,16 +51,76 @@
         [attString addAttribute:(NSString *)kCTForegroundColorAttributeName  
                           value:(id)([UIColor redColor].CGColor)  
                           range:NSMakeRange(0, 4)]; 
-        UIFont *font=[UIFont boldSystemFontOfSize:msgView.font.lineHeight];
-        [attString addAttribute:(NSString *)kCTFontAttributeName  
-                            value:(__bridge id)CTFontCreateWithName((__bridge CFStringRef)font.fontName,
-                                                           font.lineHeight,   
-                                                           NULL)  
-                            range:NSMakeRange(0, 4)];
+        
         [msgView setAttributedText:attString];
         
     }
     return self;
+}
+
+- (void) setData:(NSDictionary*)dict
+{
+    NSString *name = [dict objectForKey:@"name"];
+    if (name == nil) {
+        name = @"";
+    }
+    NSString *text = [dict objectForKey:@"description"], *msg = [dict objectForKey:
+    @"message"];
+    if (text == nil)
+        text = @"";
+    if (msg == nil)
+        msg = @"";
+    if (text.length > 0 && msg.length > 0)
+        text = [NSString stringWithFormat:@"%@\n", text];
+    text = [NSString stringWithFormat:@"%@%@", text, msg];
+    NSString *time = [dict objectForKey:@"time"];
+    if (time == nil) {
+        time = @"";
+    }
+    text = [NSString stringWithFormat:@"%@[%@]", text, time];
+    NSRange range = [text rangeOfString:name];
+    NSMutableAttributedString *attString;
+     UIFont *font = [UIFont boldSystemFontOfSize:msgView.font.lineHeight];
+    if (range.length > 0) {
+        attString = [[NSMutableAttributedString alloc] initWithString:text];
+        [attString addAttribute:(NSString *)kCTForegroundColorAttributeName
+                          value:(id)textBlue.CGColor
+                          range:range];
+       
+        [attString addAttribute:(NSString *)kCTFontAttributeName
+                          value:(__bridge id)CTFontCreateWithName((__bridge CFStringRef)font.fontName,
+                                                                  font.lineHeight,
+                                                                  NULL)
+                          range:range];
+        range.length = text.length - time.length;
+        if (range.length > -1)
+        {
+            [attString addAttribute:(NSString *)kCTForegroundColorAttributeName
+                              value:(id)timeColor.CGColor
+                              range:NSMakeRange(range.length, time.length)];
+        }
+    } else {
+        attString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@:\n%@", name, text]];
+        range.location = 0;
+        range.length = name.length;
+        [attString addAttribute:(NSString *)kCTForegroundColorAttributeName
+                          value:(id)textBlue.CGColor
+                          range:range];
+        
+        [attString addAttribute:(NSString *)kCTFontAttributeName
+                          value:(__bridge id)CTFontCreateWithName((__bridge CFStringRef)font.fontName,
+                                                                  font.lineHeight,
+                                                                  NULL)
+                          range:range];
+        range.length = text.length - time.length;
+        if (range.length > -1)
+        {
+            [attString addAttribute:(NSString *)kCTForegroundColorAttributeName
+                              value:(id)timeColor.CGColor
+                              range:NSMakeRange(range.length, time.length)];
+        }
+    }
+    [msgView setAttributedText:attString];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol FBNewsHandlerDelegate <NSObject>
+
+- (void) onLoadData:(NSArray*)data;
+
+@end
+
 @interface FBNewsHandler : NSObject
+
+@property(nonatomic, weak) id<FBNewsHandlerDelegate> delegate;
+
 - (void) requestNewsSession;
+
 @end

@@ -10,12 +10,12 @@
 #import "PullTableView.h"
 #import "TouchButton.h"
 #import "FBNewsTableCell.h"
-#import "FBNewsHandler.h"
 
 @interface FBNewsViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UIColor *selectedColor;
     FBNewsHandler *fbNewsHandler;
+    NSArray *array;
 }
 @property (strong, nonatomic) IBOutlet PullTableView *pullTableView;
 @end
@@ -30,6 +30,7 @@
     if (self) {
         selectedColor=[UIColor colorWithRed:170.f/255 green:170.f/255 blue:170.f/255 alpha:1.0f];
         fbNewsHandler=[[FBNewsHandler alloc] init];
+        fbNewsHandler.delegate = self;
     }
     return self;
 }
@@ -62,6 +63,14 @@
 - (void) dealloc
 {
     fbNewsDelegate=nil;
+}
+
+#pragma mark - FBNewsHandlerDelegate
+
+- (void) onLoadData:(NSArray*)data
+{
+    array = data;
+    [self.pullTableView reloadData];
 }
 
 #pragma mark - Refresh and load more methods
@@ -97,7 +106,7 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return array.count;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -125,6 +134,7 @@
         
     }
     view=cell.backView;
+    [cell setData:[array objectAtIndex:indexPath.row]];
     NSIndexPath *path=[tableView indexPathForSelectedRow];
     if(path&&[path compare:indexPath]==NSOrderedSame){
         view.backgroundColor=selectedColor;

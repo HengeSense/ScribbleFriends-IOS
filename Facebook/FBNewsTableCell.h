@@ -16,4 +16,5 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *picView;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier height:(int)height;
+- (void) setData:(NSDictionary*)dict;
 @end

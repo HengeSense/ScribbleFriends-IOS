@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "FBNewsDelegate.h"
+#import "FBNewsHandler.h"
 
-@interface FBNewsViewController : UIViewController
+@interface FBNewsViewController : UIViewController<FBNewsHandlerDelegate>
+
 @property(nonatomic,strong) id<FBNewsDelegate> fbNewsDelegate;
+
 + (FBNewsViewController*) defaultNewsViewController;
+
 @end
